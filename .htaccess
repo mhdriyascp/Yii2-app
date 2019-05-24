@@ -1,0 +1,16 @@
+# prevent directory listing
+Options -Indexes
+IndexIgnore */*
+
+# follow symbolic links
+Options FollowSymlinks
+RewriteEngine on
+# without trailing slash
+RewriteRule ^yii2-admin(/.+)?$ backend/web/$1 [L,PT]
+RewriteRule ^yii2-api(/.+)?$ service/web/$1 [L,PT]
+RewriteRule ^yii2-doc(/.+)?$ doc/$1 [L,PT]
+# with trailing slash
+RewriteRule ^yii2-admin/(.+)?$ backend/web/$1 [L,PT]
+RewriteRule ^yii2-api/(.+)?$ service/web/$1 [L,PT]
+RewriteRule ^yii2-doc/(.+)?$ doc/$1 [L,PT]
+RewriteRule ^(.+)?$ frontend/web/$1 [L,PT]

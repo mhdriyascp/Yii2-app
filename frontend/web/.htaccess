@@ -1,0 +1,11 @@
+RewriteEngine on
+# if backend request
+# RewriteCond %{REQUEST_URI} ^/frontend/web
+# RewriteCond %{REQUEST_FILENAME} !-f
+# RewriteCond %{REQUEST_FILENAME} !-d
+# RewriteRule . /frontend/web/index.php         
+
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . index.php      

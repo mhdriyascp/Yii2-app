@@ -1,0 +1,8 @@
+RewriteEngine on
+RewriteBase /yii2-app/yii2-admin
+
+# if a directory or a file exists, use the request directly
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+# otherwise, forward to index.php
+RewriteRule . index.php
