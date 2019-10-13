@@ -16,6 +16,7 @@ class m190524_143516_create_univercity_table extends Migration
             'univercity_id' => $this->primaryKey(),
             'univercity_name'=>$this->string()->notNull()->unique(),
             'univercity_description'=>$this->text(),
+            'created_by' => $this->integer()->notNull(),
             'created_at' => $this->integer()->notNull(),
             'updated_at' => $this->integer()->notNull(),
             'status' => $this->smallInteger()->notNull()->defaultValue(1),

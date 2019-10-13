@@ -60,6 +60,8 @@ class SignupForm extends Model
         $user->setPassword($this->password);
         $user->generateAuthKey();
         $user->generateEmailVerificationToken();
+        $user->created_at = Yii::$app->formatter->asTimestamp(date('Y-d-m h:i:s'));
+        $user->updated_at = Yii::$app->formatter->asTimestamp(date('Y-d-m h:i:s'));
         $user->status = 1;
         if($user->save()){
             Yii::$app->session->setFlash('success', "User signup Successfully");

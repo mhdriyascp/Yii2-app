@@ -17,7 +17,7 @@ class UnivercitySearch extends Univercity
     public function rules()
     {
         return [
-            [['univercity_id', 'created_at', 'updated_at', 'status'], 'integer'],
+            [['univercity_id', 'created_by', 'created_at', 'updated_at', 'status'], 'integer'],
             [['univercity_name', 'univercity_description'], 'safe'],
         ];
     }
@@ -59,6 +59,7 @@ class UnivercitySearch extends Univercity
         // grid filtering conditions
         $query->andFilterWhere([
             'univercity_id' => $this->univercity_id,
+            'created_by' => $this->created_by,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
             'status' => $this->status,

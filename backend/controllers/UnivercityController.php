@@ -66,9 +66,15 @@ class UnivercityController extends Controller
     {
         $model = new Univercity();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->univercity_id]);
-        }
+        if ($model->load(Yii::$app->request->post())){
+            $model->created_by = Yii::$app->user->identity->id;
+            $model->created_at = Yii::$app->formatter->asTimestamp(date('Y-d-m h:i:s'));
+            $model->updated_at = Yii::$app->formatter->asTimestamp(date('Y-d-m h:i:s'));
+            if($model->validate() && $model->save()){
+               Yii::$app->session->setFlash('success', "Univercity Created Successfully !");
+               return $this->redirect(['view', 'id' => $model->univercity_id]); 
+            }
+        }     
 
         return $this->render('create', [
             'model' => $model,
@@ -86,8 +92,14 @@ class UnivercityController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->univercity_id]);
+        if ($model->load(Yii::$app->request->post())) {
+            $model->created_by = Yii::$app->user->identity->id;
+            $model->created_at = Yii::$app->formatter->asTimestamp(date('Y-d-m h:i:s'));
+            $model->updated_at = Yii::$app->formatter->asTimestamp(date('Y-d-m h:i:s'));
+            if($model->validate() && $model->save()){
+               Yii::$app->session->setFlash('success', "Univercity Updated Successfully !");
+               return $this->redirect(['view', 'id' => $model->univercity_id]); 
+            }
         }
 
         return $this->render('update', [

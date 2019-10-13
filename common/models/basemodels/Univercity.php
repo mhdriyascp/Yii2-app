@@ -10,6 +10,7 @@ use Yii;
  * @property int $univercity_id
  * @property string $univercity_name
  * @property string $univercity_description
+ * @property int $created_by
  * @property int $created_at
  * @property int $updated_at
  * @property int $status
@@ -30,9 +31,9 @@ class Univercity extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['univercity_name', 'created_at', 'updated_at'], 'required'],
+            [['univercity_name', 'created_by', 'created_at', 'updated_at'], 'required'],
             [['univercity_description'], 'string'],
-            [['created_at', 'updated_at', 'status'], 'integer'],
+            [['created_by', 'created_at', 'updated_at', 'status'], 'integer'],
             [['univercity_name'], 'string', 'max' => 255],
             [['univercity_name'], 'unique'],
         ];
@@ -47,6 +48,7 @@ class Univercity extends \yii\db\ActiveRecord
             'univercity_id' => 'Univercity ID',
             'univercity_name' => 'Univercity Name',
             'univercity_description' => 'Univercity Description',
+            'created_by' => 'Created By',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
             'status' => 'Status',

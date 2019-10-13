@@ -32,6 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'univercity_id',
             'univercity_name',
             'univercity_description:ntext',
+            'created_by',
             'created_at',
             'updated_at',
             'status',
